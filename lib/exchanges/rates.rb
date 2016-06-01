@@ -29,6 +29,10 @@ module Exchanges
       Date.parse(xml.xpath("//tabela_kursow/data_publikacji/text()").to_s)
     end
 
+    def table_number
+      xml.xpath("//tabela_kursow/numer_tabeli/text()").to_s
+    end
+
     def filename
       # according to: http://www.nbp.pl/home.aspx?f=/kursy/instrukcja_pobierania_kursow_walut.html
       index = Net::HTTP.get(URI.parse(NBP + 'dir.txt'))
